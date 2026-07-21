@@ -5,12 +5,9 @@ import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
-import android.view.animation.ScaleAnimation
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,17 +18,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val tvCounter = findViewById<TextView>(R.id.tvCounter)
-        val btnCount = findViewById<MaterialButton>(R.id.btnCount)
-        val btnReset = findViewById<MaterialButton>(R.id.btnReset)
+        val btnPlus = findViewById<MaterialButton>(R.id.btnPlus)
+        val btnMinus = findViewById<MaterialButton>(R.id.btnMinus)
 
-        btnCount.setOnClickListener {
+        btnPlus.setOnClickListener {
             count++
             tvCounter.text = count.toString()
             vibrateDevice()
         }
 
-        btnReset.setOnClickListener {
-            count = 0
+        btnMinus.setOnClickListener {
+            if (count > 0) {
+                count--
+            }
             tvCounter.text = count.toString()
             vibrateDevice()
         }
@@ -46,5 +45,3 @@ class MainActivity : AppCompatActivity() {
             vibrator.vibrate(50)
         }
     }
-}
- 
