@@ -4,7 +4,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
-import android.os.VibratorManager
 import android.view.animation.ScaleAnimation
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
