@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tasbeh</string>
+    <string name="tap">+</string>
+    <string name="reset">إعادة</string>
+    <string name="target">Target</string>
+    <string name="ok">OK</string>
+    <string name="target_reached">%d reached! Starting again.</string>
+    <string name="dhikr_subhanallah">Subhanallah</string>
+</resources>
