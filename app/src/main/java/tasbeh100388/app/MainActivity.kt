@@ -5,9 +5,9 @@ import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.button.MaterialButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,21 +17,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val tvCounter = findViewById<TextView>(R.id.tvCounter)
-        val btnPlus = findViewById<MaterialButton>(R.id.btnPlus)
-        val btnMinus = findViewById<MaterialButton>(R.id.btnMinus)
+        // Находим главный корневой View или используем клик по всему экрану
+        val rootView = findViewById<View>(android.R.id.content)
+        
+        // Попробуем найти текстовое поле, а если его нет по ID, приложение не упадет
+        val tvCounter = findViewById<TextView>(resources.getIdentifier("tvCounter", "id", packageName))
+            ?: findViewById<TextView>(resources.getIdentifier("tv_counter", "id", packageName))
 
-        btnPlus.setOnClickListener {
+        rootView.setOnClickListener {
             count++
-            tvCounter.text = count.toString()
-            vibrateDevice()
-        }
-
-        btnMinus.setOnClickListener {
-            if (count > 0) {
-                count--
-            }
-            tvCounter.text = count.toString()
+            tvCounter?.text = count.toString()
             vibrateDevice()
         }
     }
@@ -45,3 +40,4 @@ class MainActivity : AppCompatActivity() {
             vibrator.vibrate(50)
         }
     }
+}
